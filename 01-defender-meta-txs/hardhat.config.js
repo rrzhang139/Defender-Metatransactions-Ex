@@ -41,7 +41,7 @@ module.exports = {
       gasPrice: 8000000000
     },
     mumbai: {
-      url: "https://polygon-mumbai.g.alchemy.com/v2/DPqOh2U2ZkKuuIlpL8zY975MB6WhNcQ7",
+      url: "",
       accounts: [process.env.PRIVATE_KEY],
       gas: 2100000,
       gasPrice: 8000000000
