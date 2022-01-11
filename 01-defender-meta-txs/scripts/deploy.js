@@ -8,7 +8,7 @@ async function deploy(name, ...params) {
 
 async function main() {
   const forwarder = await deploy('MinimalForwarder');
-  const registry = await deploy("Registry", forwarder.address);
+  const registry = await deploy("ActiveBatch", forwarder.address);
 
   writeFileSync('deploy.json', JSON.stringify({
     MinimalForwarder: forwarder.address,

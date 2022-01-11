@@ -12,12 +12,12 @@ function getInstance(name) {
 
 async function main() {
   const forwarder = await getInstance('MinimalForwarder');
-  const registry = await getInstance("Registry");
+  const registry = await getInstance("ActiveBatch");
 
   const { NAME: name, PRIVATE_KEY: signer } = process.env;
   const from = new ethers.Wallet(signer).address;
   console.log(`Signing registration of ${name || DEFAULT_NAME} as ${from}...`);
-  const data = registry.interface.encodeFunctionData('register', [name || DEFAULT_NAME]);
+  const data = registry.interface.encodeFunctionData('create', [from, 0x0]);
   const result = await signMetaTxRequest(signer, forwarder, {
     to: registry.address, from, data
   });
