@@ -1,4 +1,4 @@
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.3;
 
 import "@openzeppelin/contracts-upgradeable/token/ERC1155/ERC1155Upgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/metatx/ERC2771ContextUpgradeable.sol";
@@ -15,7 +15,8 @@ import "@openzeppelin/contracts-upgradeable/metatx/MinimalForwarderUpgradeable.s
 contract ActiveBatch is
     ERC1155Upgradeable,
     ERC2771ContextUpgradeable,
-    OwnableUpgradeable
+    OwnableUpgradeable,
+    MinimalForwarderUpgradeable
 {
     using SafeMathUpgradeable for uint256;
     uint256 private _currentTokenID;
@@ -55,6 +56,7 @@ contract ActiveBatch is
         __Ownable_init_unchained();
         __ERC1155_init_unchained(baseURI);
         __ERC2771Context_init_unchained(forwarder);
+        __MinimalForwarder_init();
         admin = _admin;
         _currentTokenID = 0;
     }

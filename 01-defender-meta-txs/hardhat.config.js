@@ -2,6 +2,7 @@ require('dotenv').config();
 
 require("@nomiclabs/hardhat-waffle");
 require("@nomiclabs/hardhat-ethers");
+require('@openzeppelin/hardhat-upgrades');
 
 task("accounts", "Prints the list of accounts", async () => {
   const accounts = await ethers.getSigners();
@@ -28,7 +29,7 @@ module.exports = {
       accounts: [process.env.PRIVATE_KEY],
     },
     mumbai: {
-      url: '',
+      url: 'https://polygon-mumbai.g.alchemy.com/v2/{KEY}',
       accounts: [process.env.PRIVATE_KEY],
     }
   }
